@@ -117,6 +117,18 @@ useRouteHead(
           </g>
           <path d="M50 266 L82 266 L78 300 L54 300 Z" fill="#c4683f" />
           <rect x="47" y="260" width="38" height="9" rx="3" fill="#b5552f" />
+
+          <g class="cricket">
+            <g transform="scale(1.3)">
+              <path d="M-1 -3 L-4.5 -6.8 L-6.2 0" fill="none" stroke="#5a3d22" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2.4 -1.6 L3.4 0 M0.4 -1.5 L0.6 0" fill="none" stroke="#5a3d22" stroke-width="0.7" stroke-linecap="round" />
+              <ellipse cx="0" cy="-3" rx="4.6" ry="2.2" fill="#6b4a2b" />
+              <path d="M-4 -3.6 L3 -4.3" stroke="#4a3119" stroke-width="0.6" stroke-linecap="round" />
+              <circle cx="4.6" cy="-3.6" r="1.8" fill="#5a3d22" />
+              <circle cx="5.3" cy="-4" r="0.45" fill="#1d1a16" />
+              <path d="M5.8 -4.6 C9 -9 12 -9.5 14 -8 M5.6 -4.9 C8 -10 10 -12 12.5 -12" fill="none" stroke="#5a3d22" stroke-width="0.5" stroke-linecap="round" />
+            </g>
+          </g>
         </svg>
       </div>
     </section>
@@ -365,6 +377,49 @@ h1 {
   }
 }
 
+.cricket {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transform: translate(90px, 234px) scale(-1, 1);
+  animation: hop 7s ease-in-out infinite;
+}
+
+@keyframes hop {
+  0%,
+  12% {
+    transform: translate(90px, 234px) scale(-1, 1);
+  }
+  14% {
+    transform: translate(90px, 227px) scale(-1, 1);
+  }
+  16%,
+  30% {
+    transform: translate(90px, 234px) scale(-1, 1);
+  }
+  34% {
+    transform: translate(68px, 210px) scale(-1, 1);
+  }
+  38%,
+  58% {
+    transform: translate(46px, 253px) scale(-1, 1);
+  }
+  59%,
+  64% {
+    transform: translate(46px, 253px) scale(1, 1);
+  }
+  68% {
+    transform: translate(68px, 210px) scale(1, 1);
+  }
+  72%,
+  92% {
+    transform: translate(90px, 234px) scale(1, 1);
+  }
+  93%,
+  100% {
+    transform: translate(90px, 234px) scale(-1, 1);
+  }
+}
+
 @keyframes wag {
   from {
     transform: rotate(-8deg);
@@ -450,7 +505,8 @@ h1 {
   .mug,
   .paw,
   .tail,
-  .eyes {
+  .eyes,
+  .cricket {
     animation: none;
   }
 
