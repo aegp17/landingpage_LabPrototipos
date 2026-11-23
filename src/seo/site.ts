@@ -1,6 +1,6 @@
 import type { Locale } from '../i18n'
 
-export const SITE_URL = 'https://aegp17.github.io/landingpage_LabPrototipos'
+export const SITE_URL = 'https://labprotounet.com'
 
 export const INDEXABLE = false
 

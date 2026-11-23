@@ -5,8 +5,8 @@ import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const SITE_URL = 'https://aegp17.github.io/landingpage_LabPrototipos'
-const BASE = '/landingpage_LabPrototipos/'
+const SITE_URL = 'https://labprotounet.com'
+const BASE = '/'
 const DEFAULT_LOCALE = 'es'
 const LOCALES = ['es', 'en'] as const
 
