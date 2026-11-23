@@ -43,8 +43,8 @@ const other = computed(() => altLocale(locale.value))
   place-items: center;
   width: 2rem;
   height: 2rem;
-  border-radius: 8px;
-  background: var(--ink);
+  border-radius: 9px;
+  background: var(--accent);
   color: var(--surface);
   font-size: 0.8rem;
   font-weight: 700;

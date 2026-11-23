@@ -16,7 +16,7 @@ npm install
 npm run dev
 ```
 
-El servidor de desarrollo se levanta en `http://localhost:5173/landingpage_LabPrototipos/`.
+El servidor de desarrollo se levanta en `http://localhost:5173/`.
 
 ## Build de producción
 
@@ -36,25 +36,35 @@ npm run preview
 
 - El trabajo se integra en `develop` y pasa a `main` con un pull request.
 - Cada push a `main` ejecuta `.github/workflows/deploy.yml`, que compila y publica en GitHub Pages.
-- Mientras no haya dominio propio, el sitio se sirve en `https://aegp17.github.io/landingpage_LabPrototipos/`.
+- El sitio se sirve en `https://labprotounet.com`.
 
-## Cambiar a un dominio propio
+## Dominio
 
-Hoy el sitio vive en una subruta de GitHub Pages. Para pasar a un dominio (por ejemplo, un subdominio de la universidad):
+`labprotounet.com` está registrado en Namecheap y su DNS se gestiona en Cloudflare, **sin proxy** (nube gris), para que GitHub emita y renueve el certificado del dominio:
+
+| Tipo | Nombre | Contenido |
+|---|---|---|
+| A | `@` | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| AAAA | `@` | `2606:50c0:8000::153`, `2606:50c0:8001::153`, `2606:50c0:8002::153`, `2606:50c0:8003::153` |
+| CNAME | `www` | `aegp17.github.io` |
+
+En *Settings → Pages* del repositorio, el dominio personalizado es `labprotounet.com`, con «Enforce HTTPS» activado. `www` redirige al dominio principal.
+
+Si el dominio cambia, hay que actualizarlo en:
 
 | Archivo | Qué cambiar |
 |---|---|
-| `vite.config.ts` | `SITE_URL` y `BASE` (con dominio propio, `BASE = '/'`) |
+| `vite.config.ts` | `SITE_URL` |
 | `src/seo/site.ts` | `SITE_URL` |
-| `public/CNAME` | crearlo con el dominio |
+| `public/CNAME` | el dominio |
 
-Después, configurar el dominio en *Settings → Pages* del repositorio y el registro DNS que indique GitHub.
+y en *Settings → Pages*.
 
 ## Publicar el sitio definitivo
 
 Mientras el contenido no esté aprobado, el sitio no debe indexarse:
 
 - `src/seo/site.ts`: `INDEXABLE = false` añade `noindex, nofollow` a cada página. Es lo que de verdad lo impide.
-- `public/robots.txt`: bloquea todo. Solo tiene efecto con dominio propio, porque en una subruta de GitHub Pages los buscadores leen el `robots.txt` de la raíz del dominio.
+- `public/robots.txt`: bloquea todo.
 
 Al publicar el contenido real: poner `INDEXABLE = true`, abrir `robots.txt` y añadir el `sitemap.xml`.

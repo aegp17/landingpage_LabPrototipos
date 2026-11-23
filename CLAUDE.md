@@ -10,7 +10,7 @@ Landing page for the Laboratorio de Prototipos of the Universidad Nacional Exper
 
 ## Commands
 
-- `npm run dev` — Vite dev server at `http://localhost:5173/landingpage_LabPrototipos/`
+- `npm run dev` — Vite dev server at `http://localhost:5173/`
 - `npm run build` — type-check with `vue-tsc -b`, then prerender every route with `vite-ssg build` into `dist/`
 - `npm run preview` — serve `dist/` locally
 
@@ -32,6 +32,5 @@ Work lands on `develop` and reaches `main` through a pull request; a push to `ma
 
 ## Deployment notes
 
-- The site is served from the project subpath `https://aegp17.github.io/landingpage_LabPrototipos/`, so Vite `base` is `/landingpage_LabPrototipos/`. The URL lives in two places that must stay in sync: `SITE_URL`/`BASE` in `vite.config.ts` and `SITE_URL` in `src/seo/site.ts`. Moving to a custom domain means `BASE = '/'`, updating both `SITE_URL`s and adding `public/CNAME`.
-- While under construction the site must not be indexed. `INDEXABLE = false` in `src/seo/site.ts` emits `noindex, nofollow` on every page; that is the control that works. `public/robots.txt` disallows everything but only takes effect on a custom domain (crawlers read `robots.txt` from the host root, not from a project subpath). Flip both, and add a sitemap, only when the real content is approved.
-- The CSP lives in `index.html`. If a contact form or analytics endpoint is added, extend `connect-src` (and `script-src` if needed) there.
+- Production domain is `labprotounet.com` (registered at Namecheap, DNS on Cloudflare, custom domain set in the repo's Pages settings, `www` redirects to the apex). The DNS records are **not proxied** (grey cloud) so GitHub can issue and renew the certificate; do not turn the proxy on or switch Cloudflare SSL to Flexible. Vite `base` is `/`. The domain lives in three places that must stay in sync: `SITE_URL` in `vite.config.ts`, `SITE_URL` in `src/seo/site.ts` and `public/CNAME`.
+- While under construction the site must not be indexed: `INDEXABLE = false` in `src/seo/site.ts` emits `noindex, nofollow` on every page, and `public/robots.txt` disallows everything. Flip both, and add a sitemap, only when the real content is approved.- The CSP lives in `index.html`. If a contact form or analytics endpoint is added, extend `connect-src` (and `script-src` if needed) there.

@@ -1,10 +1,13 @@
 :root {
-  --ink: #14181d;
-  --muted: #5a626c;
-  --line: #e3e6ea;
-  --bg: #fbfbfa;
-  --surface: #ffffff;
-  --live: #1fa187;
+  --ink: #2b2520;
+  --muted: #6b5e53;
+  --line: #e8dccb;
+  --bg: #f7f1e8;
+  --surface: #fffaf3;
+  --accent: #b5552f;
+  --accent-soft: #f2c9a0;
+  --sage: #8a9a7b;
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
   color-scheme: light;
 }
 
@@ -53,6 +56,12 @@ h1,
 h2,
 h3 {
   line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {
