@@ -65,23 +65,49 @@ useRouteHead(
           </g>
 
           <g class="gear">
-            <circle cx="318" cy="252" r="30" fill="none" stroke="#8a9a7b" stroke-width="13" stroke-dasharray="10.5 7" />
-            <circle cx="318" cy="252" r="21" fill="#8a9a7b" />
-            <circle cx="318" cy="252" r="8" fill="#f7f1e8" />
+            <circle cx="236" cy="266" r="30" fill="none" stroke="#8a9a7b" stroke-width="13" stroke-dasharray="10.5 7" />
+            <circle cx="236" cy="266" r="21" fill="#8a9a7b" />
+            <circle cx="236" cy="266" r="8" fill="#f7f1e8" />
           </g>
 
           <g>
-            <path d="M378 252 L404 238 L430 252 L404 266 Z" fill="#f0dcc2" />
-            <path d="M378 252 L378 286 L404 300 L404 266 Z" fill="#dcbd98" />
-            <path d="M430 252 L430 286 L404 300 L404 266 Z" fill="#c9a27d" />
+            <path d="M282 252 L308 238 L334 252 L308 266 Z" fill="#f0dcc2" />
+            <path d="M282 252 L282 286 L308 300 L308 266 Z" fill="#dcbd98" />
+            <path d="M334 252 L334 286 L308 300 L308 266 Z" fill="#c9a27d" />
           </g>
 
-          <g>
-            <path class="steam s1" d="M214 246 C204 234 224 226 214 212" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
-            <path class="steam s2" d="M232 246 C222 234 242 226 232 212" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
-            <rect x="200" y="256" width="46" height="44" rx="9" fill="#fffaf3" stroke="#2b2520" stroke-width="3.5" />
-            <path d="M246 268 C262 268 262 290 246 290" fill="none" stroke="#2b2520" stroke-width="3.5" />
-            <rect x="200" y="270" width="46" height="9" fill="#b5552f" opacity="0.85" />
+          <g class="mug">
+            <path class="steam s1" d="M410 254 C402 244 418 236 410 224" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
+            <path class="steam s2" d="M424 254 C416 244 432 236 424 224" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
+            <rect x="398" y="262" width="38" height="38" rx="8" fill="#fffaf3" stroke="#2b2520" stroke-width="3.5" />
+            <path d="M436 271 C450 271 450 291 436 291" fill="none" stroke="#2b2520" stroke-width="3.5" />
+            <rect x="398" y="273" width="38" height="8" fill="#b5552f" opacity="0.85" />
+          </g>
+
+          <g class="cat">
+            <g class="tail">
+              <path d="M350 295 C334 292 329 276 338 262" fill="none" stroke="#e8892f" stroke-width="8" stroke-linecap="round" />
+              <path d="M334 272 L340 270" stroke="#c96a1b" stroke-width="3" stroke-linecap="round" />
+            </g>
+            <path d="M346 300 C343 272 354 254 370 252 C387 252 395 270 394 300 Z" fill="#e8892f" />
+            <path d="M352 272 C357 270 361 271 364 274 M350 282 C355 280 359 281 362 284 M352 291 C356 289 360 290 362 293" fill="none" stroke="#c96a1b" stroke-width="3" stroke-linecap="round" />
+            <ellipse cx="383" cy="277" rx="8" ry="14" fill="#f6d7b0" />
+            <ellipse cx="356" cy="299" rx="10" ry="4" fill="#d97a25" />
+            <path d="M362 230 L363 212 L374 224 Z M380 223 L390 211 L392 229 Z" fill="#e8892f" />
+            <path d="M364.5 226 L365 216 L371 223 Z M382.5 223 L389 215 L390 226 Z" fill="#eaa08f" />
+            <circle cx="376" cy="238" r="17" fill="#e8892f" />
+            <path d="M372 222.5 L373 228 M378 221.5 L378 227" stroke="#c96a1b" stroke-width="2.5" stroke-linecap="round" />
+            <ellipse cx="382" cy="245" rx="8" ry="5.5" fill="#f6d7b0" />
+            <path d="M380 241 L386 241 L383 244 Z" fill="#c9605a" />
+            <g class="eyes">
+              <ellipse cx="370" cy="236" rx="2" ry="2.8" fill="#2b2520" />
+              <ellipse cx="382" cy="235" rx="2" ry="2.8" fill="#2b2520" />
+            </g>
+            <path d="M389 245 L400 242 M389 247.5 L400 249" stroke="#2b2520" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+            <g class="paw">
+              <path d="M386 268 C390 278 392 288 392 296" fill="none" stroke="#e8892f" stroke-width="8" stroke-linecap="round" />
+              <ellipse cx="393" cy="297" rx="6" ry="4" fill="#f6d7b0" />
+            </g>
           </g>
 
           <g transform="translate(-4 38)">
@@ -260,6 +286,109 @@ h1 {
   animation-delay: 1.2s;
 }
 
+.mug,
+.paw,
+.tail,
+.eyes {
+  transform-box: fill-box;
+}
+
+.mug {
+  transform-origin: 100% 100%;
+  animation: knock 14s ease-in infinite;
+}
+
+.paw {
+  transform-origin: 0% 0%;
+  animation: swipe 14s ease-in-out infinite;
+}
+
+.tail {
+  transform-origin: 100% 100%;
+  animation: wag 3.6s ease-in-out infinite alternate;
+}
+
+.eyes {
+  transform-origin: center;
+  animation: blink 14s linear infinite;
+}
+
+@keyframes knock {
+  0%,
+  74% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  78% {
+    transform: translate(8px, 0) rotate(0deg);
+    opacity: 1;
+  }
+  82% {
+    transform: translate(18px, 2px) rotate(35deg);
+    opacity: 1;
+  }
+  90% {
+    transform: translate(34px, 90px) rotate(120deg);
+    opacity: 1;
+  }
+  92% {
+    transform: translate(36px, 110px) rotate(140deg);
+    opacity: 0;
+  }
+  97% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes swipe {
+  0%,
+  66% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  70% {
+    transform: translate(-3px, -8px) rotate(-12deg);
+  }
+  74% {
+    transform: translate(6px, -2px) rotate(0deg);
+  }
+  78% {
+    transform: translate(10px, 0) rotate(0deg);
+  }
+  84%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+@keyframes wag {
+  from {
+    transform: rotate(-8deg);
+  }
+  to {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  28%,
+  32%,
+  56%,
+  60%,
+  100% {
+    transform: scaleY(1);
+  }
+  30%,
+  58% {
+    transform: scaleY(0.1);
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -317,7 +446,11 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .gear,
   .steam,
-  .dot::after {
+  .dot::after,
+  .mug,
+  .paw,
+  .tail,
+  .eyes {
     animation: none;
   }
 
