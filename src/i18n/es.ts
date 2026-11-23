@@ -13,8 +13,13 @@ const es = {
   hero: {
     eyebrow: 'Universidad Nacional Experimental del Táchira',
     title: 'Laboratorio de Prototipos',
-    lead: 'Estamos preparando este sitio.',
-    status: 'En construcción',
+    lead: 'Estamos preparando este espacio con calma. Muy pronto podrás conocer el laboratorio, sus proyectos y cómo trabajar con nosotros.',
+    status: 'Sitio en construcción',
+    stepsLabel: 'Avance del sitio',
+    steps: ['Bocetos', 'Construcción', 'Apertura'],
+    stepDone: '(terminado)',
+    stepNow: '(en curso)',
+    stepNext: '(pendiente)',
   },
   footer: {
     university: 'Universidad Nacional Experimental del Táchira',
