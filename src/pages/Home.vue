@@ -35,7 +35,7 @@ useRouteHead(
       </div>
 
       <div class="scene" aria-hidden="true">
-        <svg viewBox="10 60 470 300" xmlns="http://www.w3.org/2000/svg">
+        <svg viewBox="10 60 520 300" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <radialGradient id="glow" cx="50%" cy="50%" r="50%">
               <stop offset="0%" stop-color="#f6c48f" stop-opacity="0.75" />
@@ -76,9 +76,11 @@ useRouteHead(
             <path d="M334 252 L334 286 L308 300 L308 266 Z" fill="#c9a27d" />
           </g>
 
-          <g class="mug">
+          <g class="steam-wrap">
             <path class="steam s1" d="M410 254 C402 244 418 236 410 224" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
             <path class="steam s2" d="M424 254 C416 244 432 236 424 224" fill="none" stroke="#c9b8a6" stroke-width="4" stroke-linecap="round" />
+          </g>
+          <g class="mug">
             <rect x="398" y="262" width="38" height="38" rx="8" fill="#fffaf3" stroke="#2b2520" stroke-width="3.5" />
             <path d="M436 271 C450 271 450 291 436 291" fill="none" stroke="#2b2520" stroke-width="3.5" />
             <rect x="398" y="273" width="38" height="8" fill="#b5552f" opacity="0.85" />
@@ -117,6 +119,18 @@ useRouteHead(
           </g>
           <path d="M50 266 L82 266 L78 300 L54 300 Z" fill="#c4683f" />
           <rect x="47" y="260" width="38" height="9" rx="3" fill="#b5552f" />
+
+          <g class="cricket">
+            <g transform="scale(1.3)">
+              <path d="M-1 -3 L-4.5 -6.8 L-6.2 0" fill="none" stroke="#5a3d22" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M2.4 -1.6 L3.4 0 M0.4 -1.5 L0.6 0" fill="none" stroke="#5a3d22" stroke-width="0.7" stroke-linecap="round" />
+              <ellipse cx="0" cy="-3" rx="4.6" ry="2.2" fill="#6b4a2b" />
+              <path d="M-4 -3.6 L3 -4.3" stroke="#4a3119" stroke-width="0.6" stroke-linecap="round" />
+              <circle cx="4.6" cy="-3.6" r="1.8" fill="#5a3d22" />
+              <circle cx="5.3" cy="-4" r="0.45" fill="#1d1a16" />
+              <path d="M5.8 -4.6 C9 -9 12 -9.5 14 -8 M5.6 -4.9 C8 -10 10 -12 12.5 -12" fill="none" stroke="#5a3d22" stroke-width="0.5" stroke-linecap="round" />
+            </g>
+          </g>
         </svg>
       </div>
     </section>
@@ -127,9 +141,9 @@ useRouteHead(
 .home {
   position: relative;
   overflow: hidden;
-  display: grid;
-  place-items: center;
-  padding: clamp(2.5rem, 8vh, 6rem) 1.25rem;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.5rem, 5vh, 3rem) 1.25rem 0;
   background:
     radial-gradient(40rem 28rem at 12% 8%, rgba(242, 201, 160, 0.45), transparent 70%),
     radial-gradient(36rem 26rem at 92% 92%, rgba(138, 154, 123, 0.22), transparent 70%),
@@ -137,12 +151,20 @@ useRouteHead(
 }
 
 .hero {
+  flex: 1;
   width: 100%;
   max-width: 68rem;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
+  margin: 0 auto;
+  min-height: clamp(32rem, 74vh, 42rem);
+  display: flex;
   align-items: center;
-  gap: clamp(1.5rem, 5vw, 4rem);
+}
+
+.copy {
+  position: relative;
+  z-index: 1;
+  max-width: min(30rem, 46%);
+  padding-bottom: 3rem;
 }
 
 .eyebrow {
@@ -157,7 +179,7 @@ h1 {
   margin-top: 0.9rem;
   font-family: var(--serif);
   font-weight: 600;
-  font-size: clamp(2.6rem, 6.5vw, 4.6rem);
+  font-size: clamp(2.4rem, 5.6vw, 4.2rem);
   letter-spacing: -0.02em;
   line-height: 1.02;
 }
@@ -263,11 +285,24 @@ h1 {
   white-space: nowrap;
 }
 
+.scene {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: min(56vw, 860px);
+  pointer-events: none;
+}
+
+@media (max-width: 1100px) {
+  .scene {
+    width: 52vw;
+  }
+}
+
 .scene svg {
   width: 100%;
   height: auto;
-  max-width: 34rem;
-  margin-inline: auto;
   display: block;
 }
 
@@ -294,8 +329,26 @@ h1 {
 }
 
 .mug {
-  transform-origin: 100% 100%;
+  transform-origin: 50% 50%;
   animation: knock 14s ease-in infinite;
+}
+
+.steam-wrap {
+  animation: steam-off 14s linear infinite;
+}
+
+@keyframes steam-off {
+  0%,
+  74% {
+    opacity: 1;
+  }
+  77%,
+  97% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .paw {
@@ -319,23 +372,41 @@ h1 {
     transform: translate(0, 0) rotate(0deg);
     opacity: 1;
   }
-  78% {
+  77% {
     transform: translate(8px, 0) rotate(0deg);
-    opacity: 1;
   }
-  82% {
-    transform: translate(18px, 2px) rotate(35deg);
-    opacity: 1;
+  79% {
+    transform: translate(16px, 0) rotate(12deg);
   }
-  90% {
-    transform: translate(34px, 90px) rotate(120deg);
-    opacity: 1;
+  81% {
+    transform: translate(30px, 12px) rotate(70deg);
   }
-  92% {
-    transform: translate(36px, 110px) rotate(140deg);
-    opacity: 0;
+  83.5% {
+    transform: translate(46px, 58px) rotate(180deg);
+    animation-timing-function: ease-out;
+  }
+  85.5% {
+    transform: translate(54px, 34px) rotate(196deg);
+    animation-timing-function: ease-in;
+  }
+  87.5% {
+    transform: translate(60px, 58px) rotate(180deg);
+    animation-timing-function: ease-out;
+  }
+  88.5% {
+    transform: translate(63px, 51px) rotate(175deg);
+    animation-timing-function: ease-in;
+  }
+  89.5%,
+  94% {
+    transform: translate(65px, 58px) rotate(180deg);
+    opacity: 1;
   }
   97% {
+    transform: translate(65px, 58px) rotate(180deg);
+    opacity: 0;
+  }
+  97.01% {
     transform: translate(0, 0) rotate(0deg);
     opacity: 0;
   }
@@ -362,6 +433,49 @@ h1 {
   84%,
   100% {
     transform: translate(0, 0) rotate(0deg);
+  }
+}
+
+.cricket {
+  transform-box: view-box;
+  transform-origin: 0 0;
+  transform: translate(90px, 234px) scale(-1, 1);
+  animation: hop 7s ease-in-out infinite;
+}
+
+@keyframes hop {
+  0%,
+  12% {
+    transform: translate(90px, 234px) scale(-1, 1);
+  }
+  14% {
+    transform: translate(90px, 227px) scale(-1, 1);
+  }
+  16%,
+  30% {
+    transform: translate(90px, 234px) scale(-1, 1);
+  }
+  34% {
+    transform: translate(68px, 210px) scale(-1, 1);
+  }
+  38%,
+  58% {
+    transform: translate(46px, 253px) scale(-1, 1);
+  }
+  59%,
+  64% {
+    transform: translate(46px, 253px) scale(1, 1);
+  }
+  68% {
+    transform: translate(68px, 210px) scale(1, 1);
+  }
+  72%,
+  92% {
+    transform: translate(90px, 234px) scale(1, 1);
+  }
+  93%,
+  100% {
+    transform: translate(90px, 234px) scale(-1, 1);
   }
 }
 
@@ -422,8 +536,15 @@ h1 {
 
 @media (max-width: 760px) {
   .hero {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
     text-align: center;
+  }
+
+  .copy {
+    max-width: none;
+    padding: 1rem 0 0;
   }
 
   .lead {
@@ -435,11 +556,11 @@ h1 {
   }
 
   .scene {
-    order: -1;
-  }
-
-  .scene svg {
-    max-width: 22rem;
+    position: relative;
+    right: auto;
+    width: calc(100% + 2.5rem);
+    margin: auto -1.25rem 0;
+    padding-top: 1.5rem;
   }
 }
 
@@ -450,7 +571,9 @@ h1 {
   .mug,
   .paw,
   .tail,
-  .eyes {
+  .eyes,
+  .cricket,
+  .steam-wrap {
     animation: none;
   }
 
